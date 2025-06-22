@@ -49,7 +49,7 @@ init_db()
 
 
 def send_whatsapp_text(phone, message):                                            #To Show Api Error In Console
-    url = f'https://graph.facebook.com/v19.0/{PHONE_NUMBER_ID}/messages'
+    url = f'https://graph.facebook.com/v19.0/{PHONE_NUMBER_ID}/messages'            
     headers = {
         'Authorization': f'Bearer {WHATSAPP_TOKEN}',
         'Content-Type': 'application/json'
