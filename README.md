@@ -56,10 +56,10 @@ pip install -r requirements.txt
 
 ### 3. Configure Meta & Razorpay Credentials in app.py
 
-VERIFY_TOKEN = "YOUR_META_VERIFY_TOKEN"                         
-PHONE_NUMBER_ID = "YOUR_PHONE_NUMBER_ID"                  
-WHATSAPP_TOKEN = "YOUR_META_ACCESS_TOKEN"                      
-razorpay_client = razorpay.Client(auth=("YOUR_RAZORPAY_KEY_ID", "YOUR_RAZORPAY_SECRET"))             
+VERIFY_TOKEN = "YOUR_META_VERIFY_TOKEN"                                                    
+PHONE_NUMBER_ID = "YOUR_PHONE_NUMBER_ID"                              
+WHATSAPP_TOKEN = "YOUR_META_ACCESS_TOKEN"                                                 
+razorpay_client = razorpay.Client(auth=("YOUR_RAZORPAY_KEY_ID", "YOUR_RAZORPAY_SECRET"))                                   
 
 ### 4. Initialize Database
 
