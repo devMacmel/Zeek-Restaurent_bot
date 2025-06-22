@@ -69,4 +69,4 @@ init_db()
 exit()
 ### 5. Run Locally
 
-python app.py
+python app.py     
