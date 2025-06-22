@@ -30,7 +30,7 @@ A complete, production-ready WhatsApp chatbot built using **Flask**, **SQLite**,
 
 /templates                                                                                                                                                   
 │   ├── admin.html                                                                    
-│   └── payment-page.html                                                                  
+│   └── payment_page.html                                                                  
 │                                                                                                                                                                         
 app.py                                                                      
 db.sqlite3                                                               
