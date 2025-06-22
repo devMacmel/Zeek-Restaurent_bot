@@ -8,7 +8,6 @@ A complete, production-ready WhatsApp chatbot built using **Flask**, **SQLite**,
 - View Booking History.
 - Enjoy a user-friendly WhatsApp button menu.
 - Admin Dashboard for monitoring all bookings.
-- Message customers directly from the Admin Panel.
 
 ---
 
