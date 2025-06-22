@@ -28,10 +28,10 @@ A complete, production-ready WhatsApp chatbot built using **Flask**, **SQLite**,
 
 ## 📂 Project Structure
 
-/templates
-│   ├── admin.html        # Admin Dashboard              
-│   └── send.html         # Send Message Panel             
-│                                                          
+/templates                                            
+│   ├── admin.html        # Admin Dashboard                                    
+│   └── send.html         # Send Message Panel                                        
+│                                                                                                         
 app.py                   # Flask App + WhatsApp Bot Logic                 
 db.sqlite3               # SQLite Database                
 requirements.txt         # Python Dependencies                   
