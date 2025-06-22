@@ -1,0 +1,5 @@
+Flask
+requests
+razorpay
+gunicorn
+setuptools>=58.0.0

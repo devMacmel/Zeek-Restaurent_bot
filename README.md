@@ -1,1 +1,1 @@
-# Zeek-Restaurent_bot
+# Zeek-Restaurent-Bot
