@@ -28,8 +28,7 @@ A complete, production-ready WhatsApp chatbot built using **Flask**, **SQLite**,
 
 ## 📂 Project Structure
 
-/templates                                                                      
-|                                                                                
+/templates                                                                                                                                                   
 │   ├── admin.html                                                                    
 │   └── send.html                                                                  
 │                                                                                                                                                                         
