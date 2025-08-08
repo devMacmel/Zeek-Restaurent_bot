@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Zeek Restaurant – Admin Menu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        a {
+            transition: color 0.3s ease;
+            text-decoration: none;
+        }
+        a:hover {
+            color: #e5e7eb;
+        }
+    </style>
+</head>
+<body class="text-white">
+
+    <!-- Navbar -->
+    <nav class="w-full flex justify-between items-center px-6 py-4 fixed top-0 left-0 bg-black bg-opacity-30 backdrop-blur-sm z-10">
+        <div class="flex space-x-6 text-sm sm:text-base">
+            <a href="/admin">Home</a>
+            <a href="/admin">Bookings</a>
+        </div>
+        <div class="text-lg sm:text-xl font-semibold absolute left-1/2 transform -translate-x-1/2">
+            Zeek Restaurant
+        </div>
+        <div class="text-sm sm:text-base">
+            <a href="/logout">Logout</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative h-screen flex items-center justify-start pl-16 pt-20 bg-black bg-opacity-40">
+        <img src="https://images.pexels.com/photos/32640604/pexels-photo-32640604.jpeg" 
+             alt="Restaurant Background" 
+             class="absolute top-0 left-0 w-full h-full object-cover z-0">
+        <div class="relative z-10 max-w-lg">
+            <p class="text-4xl sm:text-5xl font-bold leading-tight drop-shadow-lg">
+                "One cannot think well, love well, sleep well, if one has not dined well."
+            </p>
+        </div>
+    </section>
+
+    <!-- Admin Menu Management Section -->
+    <section class="bg-gray-100 text-black py-12">
+        <h2 class="text-center text-2xl font-bold mb-6">Manage Menu Items</h2>
+        <hr class="border-gray-300 mb-8 w-full mx-auto">
+
+        <!-- Add New Item Form -->
+        <fieldset class="border p-4 rounded mb-8">
+            <legend class="text-lg font-semibold px-2">Add New Menu Item</legend>
+            <form method="POST" action="/admin/menu/add" enctype="multipart/form-data" class="max-w-full mx-auto bg-white p-6 rounded shadow overflow-x-auto mt-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div class="flex flex-col">
+                        <label class="text-sm font-medium">Title:</label>
+                        <input type="text" name="title" required class="border p-2 rounded">
+                    </div>
+                    <div class="flex flex-col">
+                        <label class="text-sm font-medium">Description:</label>
+                        <input type="text" name="description" required class="border p-2 rounded">
+                    </div>
+                    <div class="flex flex-col">
+                        <label class="text-sm font-medium">Price:</label>
+                        <input type="number" name="price" required class="border p-2 rounded">
+                    </div>
+                    <div class="flex flex-col">
+                        <label class="text-sm font-medium">Image URL:</label>
+                        <input type="text" name="image" required class="border p-2 rounded">
+                    </div>
+                    <div class="flex flex-col">
+                        <label class="text-sm font-medium">Ingredients:</label>
+                        <input type="text" name="ingredients" required class="border p-2 rounded">
+                    </div>
+                    <div class="flex flex-col">
+                        <label class="text-sm font-medium">Energy (kcal):</label>
+                        <input type="text" name="energy" required class="border p-2 rounded">
+                    </div>
+                    <div class="flex flex-col">
+                        <label class="text-sm font-medium">Fat (g):</label>
+                        <input type="text" name="fat" required class="border p-2 rounded">
+                    </div>
+                    <div class="flex flex-col">
+                        <label class="text-sm font-medium">Carbohydrates (g):</label>
+                        <input type="text" name="carbohydrates" required class="border p-2 rounded">
+                    </div>
+                    <div class="flex flex-col">
+                        <label class="text-sm font-medium">Protein (g):</label>
+                        <input type="text" name="protein" required class="border p-2 rounded">
+                    </div>
+                    <div class="flex flex-col">
+                        <label class="text-sm font-medium">Sodium (mg):</label>
+                        <input type="text" name="sodium" required class="border p-2 rounded">
+                    </div>
+                    <div class="flex flex-col">
+                        <label class="text-sm font-medium">Sugars (g):</label>
+                        <input type="text" name="sugars" required class="border p-2 rounded">
+                    </div>
+                    <div class="flex flex-col">
+                        <label class="text-sm font-medium">Fiber (g):</label>
+                        <input type="text" name="fiber" required class="border p-2 rounded">
+                    </div>
+                </div>
+                <div class="mt-6 text-center">
+                    <button type="submit" class="bg-green-500 hover:bg-green-600 text-white font-semibold px-6 py-2 rounded transition">
+                        Add Item
+                    </button>
+                </div>
+            </form>
+        </fieldset>
+
+        <!-- Table of Existing Items -->
+        <fieldset class="border p-4 rounded">
+            <legend class="text-lg font-semibold px-2">Current Menu Items</legend>
+            <table class="min-w-full bg-white mx-auto rounded shadow overflow-x-auto mt-4">
+                <thead>
+                    <tr class="bg-gray-200 text-left">
+                        <th class="p-3">ID</th>
+                        <th class="p-3">Title</th>
+                        <th class="p-3">Price</th>
+                        <th class="p-3">Image</th>
+                        <th class="p-3">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in items %}
+                    <tr class="border-t">
+                        <td class="p-3">{{ item[0] }}</td>
+                        <td class="p-3">{{ item[1] }}</td>
+                        <td class="p-3">₹{{ item[3] }}</td>
+                        <td class="p-3"><img src="{{ item[6] }}" width="100" class="rounded"></td>
+                        <td class="p-3">
+                            <a href="/admin/menu/delete/{{ item[0] }}" class="text-red-600 hover:underline">❌ Delete</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </fieldset>
+    </section>
+
+</body>
+</html>

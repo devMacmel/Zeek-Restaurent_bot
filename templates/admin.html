@@ -2,30 +2,102 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Admin Dashboard</title>
+    <title>Zeek Restaurant – Admin Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gray-100">
-    <h2 class="text-center text-xl font-bold my-4">Live Bookings</h2>
-    <table class="min-w-full bg-white mx-auto rounded shadow">
-        <thead><tr><th>ID</th><th>Phone</th><th>Name</th><th>Date</th><th>Time</th><th>People</th><th>Paid</th></tr></thead>
-        <tbody id="bookingTable"></tbody>
-    </table>
- 
-    <script>
-        function loadBookings() {
-            fetch('/admin_data')
-            .then(res => res.json())
-            .then(data => {
-                let rows = '';
-                data.forEach(b => {
-                    rows += `<tr><td>${b[0]}</td><td>${b[1]}</td><td>${b[2]}</td><td>${b[3]}</td><td>${b[4]}</td><td>${b[5]}</td><td>${b[6]}</td></tr>`;
-                });
-                document.getElementById('bookingTable').innerHTML = rows;
-            });
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-image: url('https://images.unsplash.com/photo-1618681462303-7a8bfebfdcca?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
-        setInterval(loadBookings, 5000);
-        loadBookings();
-    </script>
+        a {
+            transition: color 0.3s ease;
+            text-decoration: none;
+        }
+        a:hover {
+            color: #e5e7eb;
+        }
+    </style>
+</head>
+<body class="min-h-screen text-white overflow-x-hidden">
+
+    <!-- Navbar -->
+    <nav class="w-full flex justify-between items-center px-4 sm:px-6 py-4 fixed top-0 left-0 bg-black bg-opacity-30 backdrop-blur-sm z-10">
+        <div class="flex space-x-4 sm:space-x-6 text-sm sm:text-base">
+            <a href="/admin">Booking</a>
+            <a href="/admin/menu">Menu</a>
+        </div>
+        <div class="text-base sm:text-lg md:text-xl font-semibold absolute left-1/2 transform -translate-x-1/2">
+            Zeek Restaurant
+        </div>
+        <div class="text-sm sm:text-base">
+            <a href="/logout">Logout</a>
+        </div>
+    </nav>
+
+    <!-- Header Quote Section -->
+    <main class="flex items-center justify-center text-center h-screen pt-32 sm:pt-24 px-4 bg-black bg-opacity-40">
+        <div class="max-w-xl">
+            <p class="text-2xl sm:text-4xl md:text-5xl font-bold leading-tight drop-shadow-lg">
+                "Good food is the foundation<br class="hidden sm:block"> of genuine happiness."
+            </p>
+            <p class="mt-6 text-base sm:text-lg text-gray-200 italic">
+                Book your table now and turn meals into memories.
+            </p>
+        </div>
+    </main>
+
+    <!-- Live Booking Table Section -->
+    <section class="bg-black bg-opacity-40">
+        <h2 class="text-center text-2xl font-bold mb-6 pt-8">Live Bookings</h2>
+        <div class="overflow-x-auto">
+            <table class="min-w-full table-auto text-white text-sm bg-black bg-opacity-20 backdrop-blur rounded-lg shadow-lg">
+                <thead class="bg-gray-800 text-white">
+                    <tr>
+                        <th class="px-4 py-2">Phone</th>
+                        <th class="px-4 py-2">Name</th>
+                        <th class="px-4 py-2">Date</th>
+                        <th class="px-4 py-2">Time</th>
+                        <th class="px-4 py-2">People</th>
+                        <th class="px-4 py-2">Status</th>
+                        <th class="px-4 py-2">Txn ID</th>
+                    </tr>
+                </thead>
+                <tbody id="bookingTable" class="text-center text-white">
+                    <!-- Fetched rows will go here -->
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Script to Fetch Live Bookings -->
+<script>
+    function loadBookings() {
+        fetch('/admin_data')
+        .then(res => res.json())
+        .then(data => {
+            let rows = '';
+            data.forEach(b => {
+                rows += `<tr>
+                    <td>${b.phone}</td>
+                    <td>${b.name}</td>
+                    <td>${b.date}</td>
+                    <td>${b.time}</td>
+                    <td>${b.people}</td>
+                    <td>${b.status}</td>
+                    <td>${b.txnid}</td>
+                </tr>`;
+            });
+            document.getElementById('bookingTable').innerHTML = rows;
+        })
+        .catch(err => console.error('Error loading bookings:', err));
+    }
+    setInterval(loadBookings, 5000);
+    loadBookings();
+</script>
+
 </body>
 </html>
