@@ -1,10 +1,10 @@
 # Zeek-Restaurent-Booking-Bot
 
-A complete, production-ready WhatsApp chatbot built using **Flask**, **SQLite**, **Meta WhatsApp Cloud API**, and **Razorpay**. This bot allows restaurant customers to:
+A complete, production-ready WhatsApp chatbot built using **Flask**, **SQLite**, **Meta WhatsApp Cloud API**, and **Payu**. This bot allows restaurant customers to:
 
 - View the Menu with Images, Ingredients, and Health Stats.
 - Book Tables via WhatsApp.
-- Make Payments securely via Razorpay.
+- Make Payments securely via Payu.
 - View Booking History.
 - Enjoy a user-friendly WhatsApp button menu.
 - Admin Dashboard for monitoring all bookings.
@@ -16,7 +16,7 @@ A complete, production-ready WhatsApp chatbot built using **Flask**, **SQLite**,
 ✅ Interactive WhatsApp buttons (Menu / Book Table / View History)  
 ✅ Beautiful menu display with images, ingredients & health info  
 ✅ Table Booking with slot limit (max 5 tables / 2hr slot)  
-✅ Razorpay payment link generation (can be disabled for test)  
+✅ Payu payment link generation (can be disabled for test)  
 ✅ Automatic Booking History tracking  
 ✅ Admin Panel (`/admin`) to view bookings  
 ✅ Message customers manually from `/send` page  
